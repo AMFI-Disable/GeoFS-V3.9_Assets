@@ -1,0 +1,311 @@
+.livery-list {
+    width: 450px;
+    resize: horizontal;
+    contain: content;
+}
+
+#listDiv h6 {
+    padding-left: 4px;
+}
+#listDiv h6:before,
+#specialliveryheader:before  {
+    content: "▼";
+    margin-right: 2px;
+}
+#listDiv h6.closed:before,
+#specialliveryheader.closed:before {
+    content: "▶";
+    margin-right: 2px;
+}
+
+.potato-mode-search {
+    display: none;
+}
+
+.potato-mode-search.geofs-visible {
+    display: block;
+}
+
+.fa.fa-star {
+    text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black;
+    color: white;
+    display: inline;
+    text-align: right;
+    cursor: pointer;
+}
+
+.checked {
+    color: rgb(255, 193, 7) !important;
+}
+
+i.checked::before {
+    content: "★" !important;
+}
+
+input[type="file"] {
+    width: 30%;
+    display: inline-block;
+    background-color: rgb(83, 109, 254);
+    color: white;
+    padding: 12px 0;
+    margin: 2px 0;
+    height: 20px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.colorChooser {
+    width: 30%;
+    display: inline-block;
+    background-color: rgb(83, 109, 254);
+    color: white;
+    padding: 1px 0;
+    margin: 2px 0;
+    height: 45px;
+    outline: none;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+input[type="file"].err {
+    background-color: rgb(254, 109, 83);
+}
+
+input[type="file"]::-webkit-file-upload-button,
+input[type="file"]::file-selector-button {
+    visibility: hidden;
+    width: 0;
+}
+
+#livery-custom-tab-direct input[type="file"]::before,
+#livery-custom-tab-upload input[type="file"]::before {
+    content: "UPLOAD IMAGE";
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-size: 14px;
+}
+
+#livery-custom-tab-direct input[type="file"]::before {
+    content: 'LOAD IMAGE';
+}
+
+#livery-custom-tab-upload input[type="file"].err::before {
+    content: 'NO API KEY';
+}
+
+input[type="text"][name="textureInput"]{
+    color: white;
+    font-size: 14px;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    height: 36px;
+    display: inline-block;
+    background-color: #729e8f;
+    border: none;
+    outline: none;
+    width: 68%;
+    padding: 4px 3px;
+    keyboard-events: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#livery-setting-apikey::placeholder,
+input[name="textureInput"]::placeholder {
+    color: #dedede;
+    font-size: 14px;
+}
+
+img.livery-title {
+    width: 95%;
+    display: block;
+    margin: 0 auto;
+}
+
+ul.livery-custom-tabs {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: white;
+    padding-inline-start: 0;
+    margin: 0;
+}
+
+.livery-custom-tabs li {
+    display: inline-block;
+    padding: 0.75rem;
+    cursor: pointer;
+    flex-grow: 1;
+    text-align: center;
+}
+.livery-submit div {
+    padding: 10px 0;
+}
+.livery-submit div label {
+    display: block;
+    padding: 5px 0;
+}
+.livery-submit div label[for="livery-submit-confirm-perms"],
+.livery-submit div label[for="livery-submit-confirm-legal"] {
+    display: inline;
+}
+.livery-submit div input[id="livery-submit-credits"] {
+    margin-bottom: 10px;
+}
+.livery-submit div input[type="text"],
+.livery-submit div input[type="number"],
+#livery-setting-discordid,
+#livery-setting-apikey {
+    background-color: #729e8f;
+    color: #dedede;
+    padding: 4px 2px;
+    width: 98%;
+    height: 36px;
+}
+
+#livery-custom-tab-upload button {
+    position: initial;
+    margin: 10px auto;
+    display: block;
+    width: 80%;
+    text-align: center;
+}
+
+#livery-custom-tab-upload > div,
+#livery-custom-tab-direct > div,
+#livery-custom-tab-download > div,
+#livery-custom-tab-api div {
+    padding: 10px;
+    background: white;
+}
+#livery-custom-tab-api label[for="livery-setting-discordid"] {
+    padding-top: 16px;
+    display: block;
+}
+#favorites li.livery-list-item small,
+#specialliverylist li.livery-list-item small,
+#airlinelist li.livery-list-item small,
+#liverylist li.livery-list-item small {
+    position: absolute;
+    left: 12px;
+    top: 16px;
+    color: darkgray;
+}
+
+#favorites li.livery-list-item i,
+#specialliverylist li.livery-list-item i,
+#airlinelist li.livery-list-item i,
+#liverylist li.livery-list-item i,
+#favorites li.livery-list-item span.fa.fa-star,
+#specialliverylist li.livery-list-item span.fa.fa-star,
+#airlinelist li.livery-list-item span.fa.fa-star,
+#liverylist li.livery-list-item span.fa.fa-star {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    font-style: normal;
+}
+
+#favorites li.livery-list-item i,
+#airlinelist li.livery-list-item i,
+#liverylist li.livery-list-item i {
+    top: 0px !important;
+}
+
+#favorites li.livery-list-item i::before,
+#specialliverylist li.livery-list-item i::before,
+#airlinelist li.livery-list-item i::before,
+#liverylist li.livery-list-item i::before {
+    content: "☆";
+    font-size: 24px;
+}
+
+#favorites li.livery-list-item,
+#specialliverylist li.livery-list-item,
+#airlinelist li.livery-list-item,
+#liverylist li.livery-list-item {
+    background-color: white;
+    display: none;
+    height: 48px;
+    transition: height .1s;
+    overflow: hidden;
+}
+
+#favorites li.livery-list-item,
+#specialliverylist li.livery-list-item,
+#airlinelist li.livery-list-item,
+#liverylist li.livery-list-item.geofs-visible {
+    display: block;
+}
+
+#liverylist li.livery-list-item.offi:hover {
+    transition: height 0.1s;
+    height: 240px;
+}
+
+.geofs-list .livery-custom-tabs li:hover,
+#favorites li.livery-list-item:hover,
+#specialliverylist li.livery-list-item:hover,
+#airlinelist li.livery-list-item:hover,
+#liverylist li.livery-list-item:hover {
+    border: 2px solid #dedede;
+    margin: -2px 0 0 -2px;
+}
+
+#favorites li.livery-list-item span:not(.fa):not(.fa-star),
+#specialliverylist li.livery-list-item span:not(.fa):not(.fa-star),
+#airlinelist li.livery-list-item span:not(.fa):not(.fa-star),
+#liverylist li.livery-list-item span:not(.fa):not(.fa-star) {
+    position: relative;
+    z-index: 10;
+    width: 80%;
+    display: block;
+}
+#airlinelist li.livery-list-item img,
+#specialliverylist li.livery-list-item img,
+#liverylist li.livery-list-item img {
+    transition: height .1s;
+    height: 48px;
+    position: absolute;
+    right: 30px;
+    top: 0;
+}
+#airlinelist li.livery-list-item:hover img,
+#specialliverylist li.livery-list-item:hover img,
+#liverylist li.livery-list-item:hover img {
+    height: 240px;
+    transition: height 0.1s;
+}
+
+.livery-searchbar {
+    width: 100%;
+    display: flex;
+}
+
+.download-fields h7 {
+    background-color: #729e8f;
+    display:block;
+    padding: 4px;
+}
+.download-fields .mdl-button {
+    position: initial;
+    margin: 4px;
+    display: inline-block;
+    width: 38%;
+}
+
+#customDiv {
+    width: 100%;
+    padding: 0;
+}
