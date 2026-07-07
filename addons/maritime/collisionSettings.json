@@ -1,0 +1,296 @@
+{
+	"carriers": ["USS Harry S. Truman (CVN-75)", "USS Carl Vinson (CVN-70)", "Clemenceau (R98)", "USS Nimitz (CVN-68)", "São Paulo (A12)", "USS Dwight D. Eisenhower (CVN-69)"],
+	"cg57": {
+		"positions": [8, 9],
+		"coll": [
+			[
+				[362.416, 8.467, 22.199],
+				[345.998, 8.467, 22.199],
+				[362.416, -8.543, 22.199]
+			],
+			[
+				[345.998, 8.467, 22.199],
+				[345.998, -8.543, 22.199],
+				[362.416, -8.543, 22.199]
+			]
+		],
+		"square": [-400, -8.46654, -340, 8.54255]
+	},
+	"USS Harry S. Truman (CVN-75)": {
+		"elevatorSquares": [
+			[
+				[21.7, -253.6],
+				[42, -259],
+				[42.3, -227.6],
+				[21.9, -227.1]
+			],
+			[
+				[43, -108],
+				[21.4, -103.3],
+				[21.4, -77.5],
+				[43.1, -77.2]
+			]
+		],
+		"alt": -11.93894,
+		"location" : [0,-11.93894,0],
+		"collAlt":20.09,
+		"refAlt": 20,
+		"touchNodes": [
+			"Elevator-1-Deck.002",
+			"Elevator-3-Deck.002"
+		],
+		"actualNodes": [
+			"elevator front",
+			"elevator back"
+		],
+		"position": [
+			"Front elevator",
+			"Back elevator"
+		],
+		"JBDTouch": ["JBD-1.002", "JBD-2.002", "JBD-3.002", "JBD-4.002"],
+		"JBDName": ["JBD-1", "JBD-2", "JBD-3", "JBD-4"],
+		"JBD": [
+			["JBD-1.002", "JBD-1-strut-b.001", "JBD-1-strut-a.001"],
+			["JBD-2.002", "JBD-2-strut-b.001", "JBD-2-strut-a.001"],
+			["JBD-3.002", "JBD-3-strut-b.001", "JBD-3-strut-a.001"],
+			["JBD-4.002", "JBD-4-strut-b.001", "JBD-4-strut-a.001"]
+		],
+		"JBDAnglesPos": [[0,-70,0], [0,-175,0], [0,50,0]],
+		"JBDAnglesNeg": [[0,70,0], [0,175,0], [0,-50,0]]
+	},
+	"USS Carl Vinson (CVN-70)": {
+		"elevatorSquares": [
+			[
+				[51.42, -42.6],
+				[51.7, -23.8],
+				[26.48, -24],
+				[20.3, -44.3]
+			],
+			[
+				[108.1, -42.7],
+				[107.2, -24.1],
+				[81.9, -23.6],
+				[75.6, -43.2]
+			],
+			[
+				[202.5, -42.6],
+				[202.8, -23.4],
+				[176.8, -23.6],
+				[170.9, -43.6]
+			]
+		],
+		"alt": -10.65641,
+		"location" : [0,-10.65641,0],
+		"refAlt": 20,
+		"collAlt": 19.959,
+		"touchNodes": [
+			"Elevator-3-Deck",
+			"Elevator-2-Deck",
+			"Elevator-1-Deck"
+		],
+		"actualNodes": [
+			"Empty",
+			"Empty.002",
+			"Empty.001"
+		],
+		"position": [
+			"Front elevator",
+			"Middle elevator",
+			"Back elevator"
+		],
+		"JBDTouch": ["JBD-1", "JBD-2", "JBD-3", "JBD-4"],
+		"JBDName": ["JBD-1", "JBD-2", "JBD-3", "JBD-4"],
+		"JBD": [
+			["JBD-1", "JBD-1-strut-b", "JBD-1-strut-a"],
+			["JBD-2", "JBD-2-strut-b", "JBD-2-strut-a"],
+			["JBD-3", "JBD-3-strut-b", "JBD-3-strut-a"],
+			["JBD-4", "JBD-4-strut-b", "JBD-4-strut-a"]
+		],
+		"JBDAnglesPos": [[0,-70,0], [0,-175,0], [0,50,0]],
+		"JBDAnglesNeg": [[0,70,0], [0,175,0], [0,-50,0]]
+	},
+	"Clemenceau (R98)": {
+		"elevatorSquares": [
+			[
+				[52.2, -48.2],
+				[71, -64.2],
+				[83.3, -49.5],
+				[63.8, -33.4]
+			],
+			[
+				[-24.5, 41.3],
+				[-6.1, 25.8],
+				[4.8, 38.3],
+				[-14.5, 54.6]
+			]
+		],
+		"alt": -9.1969,
+		"location" : [0,-9.1969,0],
+		"collAlt": 14.234,
+		"refAlt": 13.5,
+		"touchNodes": [
+			"Ascenseur1",
+			"Ascenseur2"
+		],
+		"actualNodes": [
+			"Empty",
+			"Empty.001"
+		],
+		"position": [
+			"Front elevator",
+			"Back elevator"
+		],
+		"JBDTouch":["JBD-1", "JBD-2"],
+		"JBDName": ["JBD-1", "JBD-2"],
+		"JBD": [
+			["Empty.002"],
+			["Empty.003"]
+		],
+		"JBDAnglesPos": [[0,0,-70]],
+		"JBDAnglesNeg": [[0,0,70]]
+	},
+	"USS Nimitz (CVN-68)": {
+		"elevatorSquares": [
+			[
+				[52.2, -43.4],
+				[52.4, -24.3],
+				[26.2, -24.2],
+				[21.2, -43.8]
+			],
+			[
+				[110.8, -43.4],
+				[109.8, -24.4],
+				[83.1, -24.8],
+				[77.4, -44]
+			],
+			[
+				[206.3, -43.6],
+				[206.8, -24.5],
+				[179.9, -24.4],
+				[174.3, -43.8]
+			]
+
+		],
+		"alt": -10.65641,
+		"location" : [0,-10.65641,0],
+		"collAlt": 19.959,
+		"refAlt": 20,
+		"touchNodes": [
+			"Elevator-3-Deck",
+			"Elevator-2-Deck",
+			"Elevator-1-Deck"
+		],
+		"actualNodes": [
+			"Empty",
+			"Empty.002",
+			"Empty.001"
+		],
+		"position": [
+			"Front elevator",
+			"Middle elevator",
+			"Back elevator"
+		],
+		"JBDTouch": ["JBD-1", "JBD-2", "JBD-3", "JBD-4"],
+		"JBDName": ["JBD-1", "JBD-2", "JBD-3", "JBD-4"],
+		"JBD": [
+			["JBD-1", "JBD-1-strut-b", "JBD-1-strut-a"],
+			["JBD-2", "JBD-2-strut-b", "JBD-2-strut-a"],
+			["JBD-3", "JBD-3-strut-b", "JBD-3-strut-a"],
+			["JBD-4", "JBD-4-strut-b", "JBD-4-strut-a"]
+		],
+		"JBDAnglesPos": [[0,-70,0], [0,-175,0], [0,50,0]],
+		"JBDAnglesNeg": [[0,70,0], [0,175,0], [0,-50,0]]
+	},
+	"São Paulo (A12)": {
+		"elevatorSquares": [
+			[
+				[13.1, -129.2],
+				[13.5, -147.1],
+				[-0.4, -146.6],
+				[-0.3, -129.5]
+			],
+			[
+				[25, -45],
+				[13.8, -45.1],
+				[14.2, -62.1],
+				[25.1, -62]
+			]
+		],
+		"alt": -9.1969,
+		"location" : [0,-9.1969,0],
+		"collAlt": 14.234,
+		"refAlt": 13.5,
+		"touchNodes": [
+			"Ascenseur1",
+			"Ascenseur2"
+		],
+		"actualNodes": [
+			"Empty",
+			"Empty.001"
+		],
+		"position": [
+			"Front elevator",
+			"Back elevator"
+		],
+		"JBDTouch":["JBD-1", "JBD-2"],
+		"JBDName": ["JBD-1", "JBD-2"],
+		"JBD": [
+			["Empty.002"],
+			["Empty.003"]
+		],
+		"JBDAnglesPos": [[0,0,-70]],
+		"JBDAnglesNeg": [[0,0,70]]
+	},
+	"USS Dwight D. Eisenhower (CVN-69)": {
+		"elevatorSquares": [
+			[
+				[22.6, 84.9],
+				[-0.3, 73.9],
+				[14, 43.4],
+				[39.2, 47.2]
+			],
+			[
+				[-8.4, 150.2],
+				[-30.5, 139.4],
+				[-16.5, 109.5],
+				[9.6, 113.1]
+			],
+			[
+				[-61.6, 262.2],
+				[-83.1, 251.5],
+				[-69.2, 221.5],
+				[-44.5, 224.8]
+			]
+
+		],
+		"alt": -10.65641,
+		"location" : [0,-10.65641,0],
+		"collAlt": 19.959,
+		"refAlt": 20,
+		"touchNodes": [
+			"Elevator-3-Deck",
+			"Elevator-2-Deck",
+			"Elevator-1-Deck"
+		],
+		"actualNodes": [
+			"Empty",
+			"Empty.002",
+			"Empty.001"
+		],
+		"position": [
+			"Front elevator",
+			"Middle elevator",
+			"Back elevator"
+		],
+		"JBDTouch": ["JBD-1", "JBD-2", "JBD-3", "JBD-4"],
+		"JBDName": ["JBD-1", "JBD-2", "JBD-3", "JBD-4"],
+		"JBD": [
+			["JBD-1", "JBD-1-strut-b", "JBD-1-strut-a"],
+			["JBD-2", "JBD-2-strut-b", "JBD-2-strut-a"],
+			["JBD-3", "JBD-3-strut-b", "JBD-3-strut-a"],
+			["JBD-4", "JBD-4-strut-b", "JBD-4-strut-a"]
+		],
+		"JBDAnglesPos": [[0,-70,0], [0,-175,0], [0,50,0]],
+		"JBDAnglesNeg": [[0,70,0], [0,175,0], [0,-50,0]]
+	}
+}
