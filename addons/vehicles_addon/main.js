@@ -35,7 +35,7 @@
 
     // Total Independence: Local Data & Image Base Paths
     const dataBase = "https://geofs-assets.evengao6688.workers.dev/data/";
-    const imgBase = "https://geofs-assets.evengao6688.workers.dev/images/";
+    const imgBase = "https://geofs-assets.evengao6688.workers.dev/addons/vehicles_addon/";
 
     const DATA_URL = `${dataBase}vehicles.json`;
 
