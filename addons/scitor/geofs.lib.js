@@ -1,4 +1,4 @@
-'use strict';
+
 
 const aList = [{}, {}];
 const aIndex = aList.map(sList => new Index(sList));
@@ -70,7 +70,7 @@ function appendNewChild(parent, tagName, attributes = {}, pos = -1) {
  * @returns {function(number=,number=):number}
  */
 function mulberry32(seed) {
-    return function(range = 1, offset = 0) {
+    return (range = 1, offset = 0) => {
       let t = seed += 0x6D2B79F5;
       t = Math.imul(t ^ t >>> 15, t | 1);
       t ^= t + Math.imul(t ^ t >>> 7, t | 61);
@@ -165,14 +165,12 @@ Index.prototype.nearby = function (coords, dist) {
     return [...grid].filter(g => this.dist(...coords, ...this.aList[g]) <= dist)
         .sort((a, b) => this.distSq(...coords, ...this.aList[a]) - this.distSq(...coords, ...this.aList[b]));
 };
-Index.prototype.distSq = function (lat1, lng1, lat2, lng2) {
+Index.prototype.distSq = (lat1, lng1, lat2, lng2) => {
     const a = lat2 - lat1;
     const b = lng2 - lng1;
     return a * a + b * b;
 };
-Index.prototype.dist = function (lat1, lng1, lat2, lng2) {
-    return geofs.api.map._map.distance({lat: lat1, lng: lng1}, {lat: lat2, lng: lng2});
-};
+Index.prototype.dist = (lat1, lng1, lat2, lng2) => geofs.api.map._map.distance({lat: lat1, lng: lng1}, {lat: lat2, lng: lng2});
 
 /**
  * @param {string} storageKey
@@ -233,7 +231,7 @@ function ObjectStore(storageKey) {
      * @param {string} regex
      * @returns {Array<string>}
      */
-    ObjectStore.listStorageKeys = function (regex) {
+    ObjectStore.listStorageKeys = (regex) => {
         let i, ret = [];
         for (i = 0; i < localStorage.length; i++) {
             const key = localStorage.key(i);
@@ -246,7 +244,7 @@ function ObjectStore(storageKey) {
     /**
      * @param {string} key
      */
-    ObjectStore.removeStorageByKey = function (key) {
+    ObjectStore.removeStorageByKey = (key) => {
         localStorage.removeItem(key);
     }
 }

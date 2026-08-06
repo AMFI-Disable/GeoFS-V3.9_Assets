@@ -12,9 +12,9 @@ const uploadHistory = JSON.parse(localStorage.lsUploadHistory || '{}');
 const LIVERY_ID_OFFSET = 10e3;
 const ML_ID_OFFSET = 1e3;
 let links = [];
-let airlineobjs = [];
+const airlineobjs = [];
 let whitelist;
-let mpAirlineobjs = {};
+const mpAirlineobjs = {};
 const LOG_STYLE = "white-space:nowrap;display:inline;color:";
 const log = (e, t = "log") => console[t]("%c[%cLivery%cSelector%c] %c", LOG_STYLE + "inherit;", LOG_STYLE + "#bcc3cb;", LOG_STYLE + "#3f5f8a;", LOG_STYLE + "inherit;", LOG_STYLE + "inherit;", e);
 
@@ -44,7 +44,7 @@ const log = (e, t = "log") => console[t]("%c[%cLivery%cSelector%c] %c", LOG_STYL
 	
     // one big event listener for the main livery list instead of multiple event listeners
 	const livList = document.querySelector("#liverylist");
-    livList.addEventListener('click', function ({ target }) {
+    livList.addEventListener('click', ({ target }) => {
 		if (target.nodeName === "I") return void window.LiverySelector.star(target); // if the element clicked is a star, run the star function
         const idx = parseInt(target.closest('li').getAttribute('data-idx')); // convert to int because attributes are stored as strings
         if (idx === void 0) return; // avoid livery selection when other stuff is pressed
@@ -53,14 +53,14 @@ const log = (e, t = "log") => console[t]("%c[%cLivery%cSelector%c] %c", LOG_STYL
         livery.disabled || (loadLivery(livery.texture, airplane.index, airplane.parts, livery.materials),
         livery.mp != 'disabled' && setInstanceId(idx + (livery.credits?.toLowerCase() == 'geofs' ? 0 : LIVERY_ID_OFFSET)));
     }); // uses || (logical OR) to run the right side code only if livery.disabled is falsy
-    livList.addEventListener('error', function(e) {
+    livList.addEventListener('error', (e) => {
 		const defaultThumb = `${noCommit}/thumbs/${geofs.aircraft.instance.id}.png`;
 		if (e.target.tagName !== 'IMG' || e.target.src === defaultThumb) return;
 		e.target.onerror = null;
 		e.target.src = defaultThumb;
     }, true);
 	
-    document.querySelector("#listDiv > ul#favorites").addEventListener("click", function ({ target }) {
+    document.querySelector("#listDiv > ul#favorites").addEventListener("click", ({ target }) => {
         if (target.nodeName != "LI") return;
 		const $match = $(`#liverylist > [id='${$(target).attr("id").replace("_favorite", "_button")}']`) // find the matching livery list item
 		if ($match.length === 0) return void ui.notification.show(`ID: ${$(target).attr("id")} is missing a liveryList counterpart.`)
@@ -78,7 +78,7 @@ const log = (e, t = "log") => console[t]("%c[%cLivery%cSelector%c] %c", LOG_STYL
 		potatoCheckbox.checked = geofs.preferences.liveryPotato;
 		document.querySelector(".potato-mode-search").classList.toggle("geofs-visible", potatoCheckbox.checked);
 	});
-	document.querySelector(".potato-mode-search").addEventListener("click", function () {
+	document.querySelector(".potato-mode-search").addEventListener("click", () => {
 		if (!geofs.preferences.liveryPotato) return;
 		window.LiverySelector.potatoSearch(document.querySelector("#searchlivery").value);
 	})
@@ -96,7 +96,7 @@ const log = (e, t = "log") => console[t]("%c[%cLivery%cSelector%c] %c", LOG_STYL
         localStorage.links = '';
     } else {
         links = localStorage.links.split(",");
-        links.forEach(async function (e) {
+        links.forEach(async (e) => {
             await fetch(e).then(res => res.json()).then(data => airlineobjs.push(data));
             airlineobjs[airlineobjs.length - 1].url = e.trim();
         });
@@ -106,7 +106,7 @@ const log = (e, t = "log") => console[t]("%c[%cLivery%cSelector%c] %c", LOG_STYL
     // Start multiplayer
     setInterval(updateMultiplayer, 5000);
 
-    window.addEventListener("keyup", function (e) {
+    window.addEventListener("keyup", (e) => {
         if (e.target.classList.contains("geofs-stopKeyupPropagation")) {
             e.stopImmediatePropagation();
         }
@@ -307,7 +307,7 @@ function submitLivery() {
     if (!embeds.length)
         return alert('Nothing to submit, upload images first!');
 
-    let content = [
+    const content = [
         `Livery upload by <@${localStorage.liveryDiscordId}>`,
         `__Plane:__ \`${geofs.aircraft.instance.id}\` ${geofs.aircraft.instance.aircraftRecord.name}`,
         `__Livery Name:__ \`${json.name}\``,
@@ -401,7 +401,7 @@ function loadFavorites() {
     $("#favorites").empty();
     const list = favorites.split(',');
     const airplane = geofs.aircraft.instance.id;
-    list.forEach(function (e) {
+    list.forEach((e) => {
         if ((airplane == e.slice(0, airplane.length)) && (e.charAt(airplane.length) == '_')) {
             star(domById(e));
         }
@@ -412,20 +412,20 @@ function loadAirlines() {
     domById("airlinelist").innerHTML = '';
     const airplane = getCurrentAircraft();
     const textures = airplane.liveries[0].texture;
-    airlineobjs.forEach(function(airline) {
-        let airlinename = appendNewChild(domById('airlinelist'), 'li', {
+    airlineobjs.forEach((airline) => {
+        const airlinename = appendNewChild(domById('airlinelist'), 'li', {
             style: "color:" + airline.color + ";background-color:" + airline.bgcolor + "; font-weight: bold;"
         });
         airlinename.innerText = airline.name;
-        let removebtn = appendNewChild(airlinename, "button", {
+        const removebtn = appendNewChild(airlinename, "button", {
             class: "mdl-button mdl-js-button mdl-button--raised mdl-button",
             style: "float: right; margin-top: 6px; background-color: #9e150b;",
             onclick: `LiverySelector.removeAirline("${airline.url}")`
         });
         removebtn.innerText = "- Remove airline";
         if (Object.keys(airline.aircrafts).includes(geofs.aircraft.instance.id)) {
-            airline.aircrafts[geofs.aircraft.instance.id].liveries.forEach(function (e, i) {
-                let listItem = appendNewChild(domById('airlinelist'), 'li', {
+            airline.aircrafts[geofs.aircraft.instance.id].liveries.forEach((e, i) => {
+                const listItem = appendNewChild(domById('airlinelist'), 'li', {
                     id: [geofs.aircraft.instance.id, e.name, 'button'].join('_'),
                     class: 'livery-list-item'
                 });
@@ -473,7 +473,7 @@ function addCustomForm() {
     }
     if (airplane.liveries[0].materials) {
         airplane.liveries[0].materials.forEach((material, key) => {
-            let partlist = [];
+            const partlist = [];
             airplane.liveries[0].texture.forEach((e, k) => {
                 if (typeof(e) === 'object'){
                     if (e.material == key){
@@ -534,9 +534,9 @@ function potatoSearch(text) {
 }
 
 function changeMaterial(name, color, type, partlist){
-    let r = parseInt(color.substring(1, 3), 16) / 255
-    let g = parseInt(color.substring(3, 5), 16) / 255
-    let b = parseInt(color.substring(5, 7), 16) / 255
+    const r = parseInt(color.substring(1, 3), 16) / 255
+    const g = parseInt(color.substring(3, 5), 16) / 255
+    const b = parseInt(color.substring(5, 7), 16) / 255
     partlist.forEach(part => {
         geofs.aircraft.instance.definition.parts[part]['3dmodel']._model.getMaterial(name).setValue(type, new Cesium.Cartesian4(r, g, b, 1.0));
     });
@@ -550,7 +550,7 @@ function changeMaterial(name, color, type, partlist){
 function star(element) {
     const e = element.classList;
     const elementId = [element.id, 'favorite'].join('_');
-	let list = localStorage.getItem('favorites').split(',');
+	const list = localStorage.getItem('favorites').split(',');
     if (e.contains("checked")) {
         domById('favorites').removeChild(domById(elementId));
         const index = list.indexOf(element.id);
@@ -681,7 +681,7 @@ function uploadLivery(fileInput) {
         'data': form
     };
 
-    $.ajax(settings).done(function (response) {
+    $.ajax(settings).done((response) => {
         const jx = JSON.parse(response);
         log(jx.data.url);
         fileInput.nextSibling.value = jx.data.url;
@@ -801,7 +801,7 @@ function saveSetting(element) {
 }
 
 async function addAirline() {
-    let url = prompt("Enter URL to the json file of the airline:");
+    const url = prompt("Enter URL to the json file of the airline:");
     if (!links.includes(url)) {
         links.push(url);
         localStorage.links += `,${url}`
@@ -819,7 +819,7 @@ function removeAirline(url) {
     } else {
         localStorage.links = links.toString();
     }
-    airlineobjs.forEach(function (e, index) {
+    airlineobjs.forEach((e, index) => {
         if (e.url.trim() === url.trim()) {
             airlineobjs.splice(index, 1);
         }
@@ -845,7 +845,7 @@ async function updateMultiplayer() {
         const liveryEntry = liveryobj.aircrafts[u.aircraft];
         let textures = [];
 
-        let otherId = u.currentLivery;
+        const otherId = u.currentLivery;
 
         // if (!liveryEntry || !u.model || liveryEntry.mp == 'disabled') {
         if (!liveryEntry || !u.model) { // TODO change back, testing

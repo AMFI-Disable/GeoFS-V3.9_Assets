@@ -201,7 +201,7 @@ geofs.aircraft.instance.definition.sounds[3].effects.volume.ratio = 100
 geofs.aircraft.instance.definition.sounds[4].effects.volume.ratio = 100
 
 //implement smooth gear tilting
-let restingPoint = 16.152139372973117
+const restingPoint = 16.152139372973117
 geofs.animation.values.gearTilt = null;
 
 function tiltGear(){
@@ -373,7 +373,7 @@ function doRadioAltCall(){
 }
 
   
-effectInterval = setInterval(function(){
+effectInterval = setInterval(()=> {
   groundEffect()
   getShake()
   tiltGear();

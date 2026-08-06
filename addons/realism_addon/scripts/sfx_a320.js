@@ -61,12 +61,12 @@ geofs.animation.values.isRetard = 0;
 restingPoint = 12.232906828403847;
 
 function getTrafficProximity() {
-  Object.values(multiplayer.visibleUsers).forEach(function(e) {
+  Object.values(multiplayer.visibleUsers).forEach((e) => {
     if (e.distance <= 1000) {
       if (e.referencePoint.lla[2] >= geofs.animation.values.altitudeMeters && e.referencePoint.lla[2] <= geofs.animation.values.altitudeMeters + 100) {
         geofs.animation.values.isTCASDescend = 1;
         if (geofs.animation.values.isTCAS == 0) {
-          let tcasInt = setInterval(function(i) {
+          const tcasInt = setInterval((i) => {
             if (i <= 2) {
               geofs.animation.values.isTCAS = 1;
             }
@@ -81,7 +81,7 @@ function getTrafficProximity() {
         if (e.referencePoint.lla[2] <= geofs.animation.values.altitudeMeters && e.referencePoint.lla[2] >= geofs.animation.values.altitudeMeters - 100) {
           geofs.animation.values.isTCASClimb = 1;
           if (geofs.animation.values.isTCAS == 0) {
-            let tcasInt = setInterval(function(i) {
+            const tcasInt = setInterval((i) => {
               if (i <= 2) {
                 geofs.animation.values.isTCAS = 1;
               }
@@ -102,7 +102,7 @@ function getTrafficProximity() {
           geofs.animation.values.isTCASDescend = 0;
           geofs.animation.values.isTCAS = 0;
 
-          let counterInterval = setInterval(function(i) {
+          const counterInterval = setInterval((i) => {
             if (i <= 3) {
               geofs.animation.values.isTCASClear = 1;
             }
@@ -120,7 +120,7 @@ function getTrafficProximity() {
 counter = 0;
 counterAtClear = 0;
 lastWind = 0;
-interval = setInterval(function() {
+interval = setInterval(() => {
   if (counter < 2) {
     counter = counter + 1
   }
@@ -303,7 +303,7 @@ function getStall() {
     }
 }
 
-setInterval(function() {
+setInterval(() => {
   getTrafficProximity();
   getFlapChange();
   getWindShear();

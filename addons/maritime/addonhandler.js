@@ -26,8 +26,8 @@ async function initFunction(){
     addons.smoke ? textureURL+=`,blueSmoke: "https://geofs-assets.evengao6688.workers.dev/addons/maritime/smoke/blue.png", redSmoke:"https://geofs-assets.evengao6688.workers.dev/addons/maritime/smoke/red.png", yellowSmoke:"https://geofs-assets.evengao6688.workers.dev/addons/maritime/smoke/yellow.png", greenSmoke:"https://geofs-assets.evengao6688.workers.dev/addons/maritime/smoke/green.png"` : null
     textureURL+='}'
 
-    let itv = setInterval(
-        function () {
+    const itv = setInterval(
+        () => {
             try {
                 if (window.ui && window.flight) {
                     main()

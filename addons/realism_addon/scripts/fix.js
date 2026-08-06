@@ -850,5 +850,5 @@ if (geofs.aircraft.instance.id != id) {
 }
 	},4000)
 }
-setInterval(function(){checkChange()},5000)
+setInterval(()=> {checkChange()},5000)
 }

@@ -87,7 +87,7 @@ function runTrueKias() {
       ];
     var pressure = 101325;
     var temperature = 288.15;
-    layers.some(function (currentLayer, i) {
+    layers.some((currentLayer, i) => {
       var baseTemperature = currentLayer[0];
       var layerHeight = currentLayer[1];
       var nextLayerHeight = layers[min(i + 1, layers.length - 1)][1];
@@ -212,7 +212,7 @@ function runTrueKias() {
   function enableKcas() {
     // Convert KTAS to KCAS.
     // Ensure "kcas" property is set before changing it.
-    var timer = setInterval(function () {
+    var timer = setInterval(() => {
       if (window.geofs && geofs.aircraft.instance && geofs.animation.values) {
         setKcas();
         /*

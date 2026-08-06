@@ -1,5 +1,5 @@
-(function() {
-    'use strict';
+(() => {
+    
     if (!window.gmenu) {
         window.gmenu = {};
     }
@@ -97,8 +97,7 @@
  * @param {string} selector - The query selector 
  * @returns {Element} The element from the query selector.
  */
-window.gmenu.waitForElm = function(selector) {
-    return new Promise(resolve => {
+window.gmenu.waitForElm = (selector) => new Promise(resolve => {
         if (document.querySelector(selector)) {
             return resolve(document.querySelector(selector));
         }
@@ -116,12 +115,11 @@ window.gmenu.waitForElm = function(selector) {
             subtree: true
         });
     });
-};
 
 /**
  * Toggles the menu (closes if it's opened, opens if it's closed)
  */
-window.gmenu.toggleMenu = function() {
+window.gmenu.toggleMenu = () => {
     if (window.gmenu.isOpen) {
         window.gmenu.isOpen = false;
         window.gmenu.menuDiv.style.display = "none";
@@ -129,7 +127,7 @@ window.gmenu.toggleMenu = function() {
         window.gmenu.isOpen = true;
         window.gmenu.menuDiv.style.display = "block";
         for (let i = 0; i < window.gmenu.allLS.length; i++) {
-            let currLS = window.gmenu.allLS[i];
+            const currLS = window.gmenu.allLS[i];
             currLS[1] ? document.getElementById(currLS[0]).checked = (localStorage.getItem(currLS[0]) == 'true') : document.getElementById(currLS[0]).value = localStorage.getItem(currLS[0]);
         }
     }
@@ -138,11 +136,11 @@ window.gmenu.toggleMenu = function() {
 /**
  * Compiles all the HTML in `window.gmenu.allHTML` and sorts them alphabetically.
  */
-window.gmenu.compileAllHTML = function() {
-    let keys = Object.keys(window.gmenu.allHTML).sort();
+window.gmenu.compileAllHTML = () => {
+    const keys = Object.keys(window.gmenu.allHTML).sort();
     window.gmenu.menuDiv.innerHTML = ``; //Clear the HTML to refresh it
-    for (let i of keys) {
-        let h = window.gmenu.allHTML[i]; //Current block of HTML
+    for (const i of keys) {
+        const h = window.gmenu.allHTML[i]; //Current block of HTML
         window.gmenu.menuDiv.innerHTML += `<div>`; //Inner div
         window.gmenu.menuDiv.innerHTML += h;
         window.gmenu.menuDiv.innerHTML += `<div class="gmenu-hr"></div></div>`; //Horizontal rule and div end (I would use the <hr> element but I think this is a little nicer and more visible)
@@ -153,14 +151,14 @@ window.gmenu.compileAllHTML = function() {
  * In a nutshell, this function handles shortcut changes when the user presses a shortcut button.
  * @param {string} id - The id of the element to be changed, which should also be the localStorage id.
  */
-window.gmenu.changeShortcut = function(id) {
+window.gmenu.changeShortcut = (id) => {
     console.log(id);
-    let btn = document.getElementById(id);
+    const btn = document.getElementById(id);
     if (btn.innerHTML !== 'Press any key...') {
         btn.innerHTML = 'Press any key...';
         btn.classList.add("gmenu-edit");
         function listen(e) {
-            let ovrrd = [e.code.toLowerCase().includes("control"), e.code.toLowerCase().includes("shift"), e.code.toLowerCase().includes("alt"), e.code.toLowerCase().includes("meta")];
+            const ovrrd = [e.code.toLowerCase().includes("control"), e.code.toLowerCase().includes("shift"), e.code.toLowerCase().includes("alt"), e.code.toLowerCase().includes("meta")];
             localStorage.setItem(id, `${e.code}&,${ovrrd[0] ? "true" : e.ctrlKey.toString()}&,${ovrrd[1] ? "true" : e.shiftKey.toString()}&,${ovrrd[2] ? "true" : e.altKey.toString()}&,${ovrrd[3] ? "true" : e.metaKey.toString()}`);
             btn.classList.remove("gmenu-edit");
             btn.innerHTML = `${(e.ctrlKey && !ovrrd[0]) ? "Ctrl+" : ""}${(e.shiftKey && !ovrrd[1]) ? "Shift+" : ""}${(e.altKey && !ovrrd[2]) ? "Alt+" : ""}${(e.metaKey && !ovrrd[3]) ? "Meta+" : ""}${e.code}`;
@@ -176,8 +174,8 @@ window.gmenu.changeShortcut = function(id) {
  * @param {string} name - The setting's identifier
  * @returns The value as requested
  */
-window.gmenu.get = function(id, name) {
-    let type = window.gmenu.lookupTable[id + name];
+window.gmenu.get = (id, name) => {
+    const type = window.gmenu.lookupTable[id + name];
     if (type == "boolean") {
         return (localStorage.getItem(id + name) == "true");
     }
@@ -262,7 +260,7 @@ window.GMenu = class { //The 'G' stands for GeoFS. I put the class in the window
                         console.log(this.prefix + " reset"); //debugging
                         console.log(this.defaults);          //More debugging
                         for (let i = 0; i < this.defaults.length; i++) {
-                            let currD = this.defaults[i]; //currD[0] = idName, currD[1] = defaultValue, currD[2] = isCheckbox
+                            const currD = this.defaults[i]; //currD[0] = idName, currD[1] = defaultValue, currD[2] = isCheckbox
                             localStorage.setItem(currD[0], currD[1]);
                             if (currD[2]) { //if it's a checkbox or radio
                                 document.getElementById(currD[0]).checked = currD[1];
@@ -292,7 +290,7 @@ window.GMenu = class { //The 'G' stands for GeoFS. I put the class in the window
      * @param {string} options - Optional HTML attributes for the input
      */
     addItem(description, lsName, type = "text", level = 0, defaultValue, options = "") {
-        let idName = this.prefix + lsName;
+        const idName = this.prefix + lsName;
         this.defaults.push([idName, defaultValue, (type == "checkbox" || type == "radio")]); //Checkboxes and radios are... "special." (elem.value doesn't work on them, they require elem.checked)
         if (localStorage.getItem(idName) == null) {
             localStorage.setItem(idName, defaultValue);
@@ -327,23 +325,23 @@ window.GMenu = class { //The 'G' stands for GeoFS. I put the class in the window
      * @param {function} upFn - The function to be executed when the shortcut is released
      */
     addKBShortcut(description, lsName, level = 0, defaultValue, fn, upFn = null) {
-        let idName = this.prefix + lsName;
+        const idName = this.prefix + lsName;
         this.defaults.push([idName, defaultValue, false]);
         if (localStorage.getItem(idName) == null) {
             console.log(idName + " is null, setting to " + defaultValue);
             localStorage.setItem(idName, defaultValue);
         }
         window.gmenu.allLS.push([idName, false]);
-        let tester = localStorage.getItem(idName).split('&,');
-        let oldSave = (tester.length == 1);
-        let e = (oldSave) ? {code: tester[0], ctrlKey: false, shiftKey: false, altKey: false, metaKey: false} : {code: tester[0], ctrlKey: (tester[1] == "true"), shiftKey: (tester[2] == "true"), altKey: (tester[3] == "true"), metaKey: (tester[4] == "true")};
+        const tester = localStorage.getItem(idName).split('&,');
+        const oldSave = (tester.length == 1);
+        const e = (oldSave) ? {code: tester[0], ctrlKey: false, shiftKey: false, altKey: false, metaKey: false} : {code: tester[0], ctrlKey: (tester[1] == "true"), shiftKey: (tester[2] == "true"), altKey: (tester[3] == "true"), metaKey: (tester[4] == "true")};
         this.html += `<span style="padding-left: ${level}rem">${description}</span>
         <button id="${this.prefix + lsName}" class="gmenu-sc" onclick="window.gmenu.changeShortcut('${this.prefix + lsName}')">${e.ctrlKey ? "Ctrl+" : ""}${e.shiftKey ? "Shift+" : ""}${e.altKey ? "Alt+" : ""}${e.metaKey ? "Meta+" : ""}${e.code}</button><br>`;
         this.updateHTML();
         let wasPressed = false;
         function t(event) { //I used 't' for the function name for no particular reason
-            let tester = localStorage.getItem(idName).split('&,');
-            let oldSave = (tester.length == 1);
+            const tester = localStorage.getItem(idName).split('&,');
+            const oldSave = (tester.length == 1);
             if ((event.key == tester[0] || event.code == tester[0]) && (oldSave || (event.ctrlKey.toString() == tester[1] && event.shiftKey.toString() == tester[2] && event.altKey.toString() == tester[3] && event.metaKey.toString() == tester[4]))) {
                 wasPressed = true;
                 console.log(event.key + " pressed");
@@ -352,8 +350,8 @@ window.GMenu = class { //The 'G' stands for GeoFS. I put the class in the window
         };
         if (upFn) {
             function u(event) {
-                let tester = localStorage.getItem(idName).split('&,');
-                let oldSave = (tester.length == 1);
+                const tester = localStorage.getItem(idName).split('&,');
+                const oldSave = (tester.length == 1);
                 if (wasPressed && ((event.key == tester[0] || event.code == tester[0]) && (oldSave || (event.ctrlKey.toString() == tester[1] && event.shiftKey.toString() == tester[2] && event.altKey.toString() == tester[3] && event.metaKey.toString() == tester[4])))) {
                     wasPressed = false;
                     console.log(event.key + " unpressed");

@@ -3,7 +3,7 @@ console.log("aircraft changes running");
 var notifiedTrue1 = new Boolean(0)
 geofs.addonAircraft = {}
 geofs.addonAircraft.isMiG21 = 0
-fixAircraft = function () {
+fixAircraft = () => {
 //Fixing the XB-70's canards
 if (geofs.aircraft.instance.id == 2948) {
 geofs.aircraft.instance.definition.parts[69].animations[0].ratio = 25
@@ -237,7 +237,7 @@ if (geofs.aircraft.instance.id == 4390) {
    };
 }
 }
-implementFixes = setInterval(function(){
+implementFixes = setInterval(()=> {
 fixAircraft()
 }, 1000);
 
@@ -311,7 +311,7 @@ geofs.aircraft.instance.setup.parts[10].animations[0].value = "liftRightWing"
 geofs.aircraft.instance.setup.parts[11].animations[0].value = "liftRightWing"
 };
 };
-wingflexInterval = setInterval(function(){
+wingflexInterval = setInterval(()=> {
 runBetterWingflex()
 },1000);
    }

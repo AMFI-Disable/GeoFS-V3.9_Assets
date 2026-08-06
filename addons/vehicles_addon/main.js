@@ -10,8 +10,8 @@
 // ==/UserScript==
 
 
-(function () {
-    'use strict';
+(() => {
+    
     console.log("Extras script running...");
 
     // reload from error
@@ -179,7 +179,7 @@
     function loadAircraftFromUrl(baseUrl, mpID, name) {
         $.ajax(baseUrl + "aircraft.json", {
             dataType: "text",
-            success: function (jsonText) {
+            success: (jsonText) => {
                 var customRecord = {
                     id: "custom_" + Date.now(),
                     name: name,
@@ -207,13 +207,13 @@
                     ui.notification.show("Failed to parse aircraft.json");
                 }
             },
-            error: function () {
+            error: () => {
                 ui.notification.show("Could not load aircraft.json");
             }
         });
     }
 
-    extrasPanel.addEventListener("click", function (e) {
+    extrasPanel.addEventListener("click", (e) => {
         const li = e.target.closest("li[data-url]");
         if (li) {
             const url = li.getAttribute("data-url");
@@ -225,7 +225,7 @@
     });
 
     // save aircraft and location
-    window.addEventListener("beforeunload", function () {
+    window.addEventListener("beforeunload", () => {
         if (geofs && geofs.aircraft && geofs.aircraft.instance) {
             // gear down?
             const groundAlt = geofs.api.getGroundAltitude(geofs.aircraft.instance.llaLocation);

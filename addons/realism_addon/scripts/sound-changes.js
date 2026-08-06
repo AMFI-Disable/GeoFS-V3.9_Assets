@@ -18,7 +18,7 @@ function getCameraDirection() {
 
   let dLong = endLong - startLong;
 
-  let dPhi = Math.log(Math.tan(endLat/2.0+Math.PI/4.0)/Math.tan(startLat/2.0+Math.PI/4.0));
+  const dPhi = Math.log(Math.tan(endLat/2.0+Math.PI/4.0)/Math.tan(startLat/2.0+Math.PI/4.0));
   if (Math.abs(dLong) > Math.PI){
     if (dLong > 0.0)
        dLong = -(2.0 * Math.PI - dLong);
@@ -39,7 +39,7 @@ function checkPos() {
   };
 function getJetSounds() {
    if (geofs.aircraft.instance.id == 7 || geofs.aircraft.instance.id == 2857 || geofs.aircraft.instance.id == 4172 || geofs.aircraft.instance.id == 2364 || geofs.aircraft.instance.id == 3591) {
-geofs.aircraft.instance.definition.sounds.forEach(function(e){
+geofs.aircraft.instance.definition.sounds.forEach((e)=> {
    if (e.file.includes("f16") && e.id.includes("rpm2")) {
 if (checkPos()[0] >= 0.99 && checkPos()[1] < 0.99) {
 	e.effects.volume.value = "nullAnimation";
@@ -70,5 +70,5 @@ audio.impl.html5.playFile("https://geofs-assets.evengao6688.workers.dev/addons/r
    }
 //console.log(checkPos()[0] + ", " + checkPos()[1])
 };
-jetSoundsInterval = setInterval(function(){getJetSounds()},100)
+jetSoundsInterval = setInterval(()=> {getJetSounds()},100)
 }

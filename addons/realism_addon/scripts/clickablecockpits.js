@@ -5,7 +5,7 @@ geofs.animation.values.dc3Ignition = 1
 geofs.animation.values.dc3Mixture = 1
 geofs.animation.values.dhc2Mixture = 1
 
-regularCockpitClickyStuffInt = setInterval(function(){
+regularCockpitClickyStuffInt = setInterval(()=> {
 //C172 throttle
 if (geofs.aircraft.instance.id == 2) {
    if (controls.mouse.clickedNode == "Cylinder001") {
@@ -109,7 +109,7 @@ if (controls.throttleStepUp == 1) {
    }
 }
 })
-booleanCockpitClickyStuffInt = setInterval(function(){
+booleanCockpitClickyStuffInt = setInterval(()=> {
 //Cub mixture
 if (geofs.aircraft.instance.id == 1) {
 	if (controls.mouse.clickedNode == "fuel") {

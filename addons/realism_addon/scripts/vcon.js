@@ -60,10 +60,10 @@ geofs.tipIndexR = 0;
 geofs.VCONarray = [];
 var condensing = new Boolean(0);
 
-updateSourcePoints = function() {
+updateSourcePoints = () => {
     let found = false;
 
-    geofs.aircraft.instance.definition.parts.forEach(function(part, index) {
+    geofs.aircraft.instance.definition.parts.forEach((part, index) => {
         if (
             part.name &&
             part.name.toLowerCase() === ("body") &&
@@ -81,7 +81,7 @@ updateSourcePoints = function() {
             geofs.tipIndexR = 0;
             geofs.tipIndexL = 0;
 
-            geofs.VCONarray.forEach(function(point, i) {
+            geofs.VCONarray.forEach((point, i) => {
                 if (point[0] > maxX) {
                     maxX = point[0];
                     geofs.tipIndexR = i;
@@ -106,7 +106,7 @@ setInterval(() => {
 	warned = false;
 }, 10000);
 
-updateVCondensation = function() {
+updateVCondensation = () => {
 	//console.log("condensing:", condensing);
 // console.log("geofs.cons:", geofs.cons);
 // console.log("AOA:", geofs.animation.values.aoa);
@@ -152,7 +152,7 @@ geofs.fx.vcondensationEmitterRight.destroy()
 condensing = 0
 	}
 }
-condensationInt = setInterval(function(){
+condensationInt = setInterval(()=> {
    updateSourcePoints()
 	updateVCondensation()
 },100)

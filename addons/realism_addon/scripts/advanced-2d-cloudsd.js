@@ -6,7 +6,7 @@
 function fixCloudsDensity() {
 geofs.advancedClouds = {};
 let clouds = true;
-geofs.advancedClouds.update = function() {
+geofs.advancedClouds.update = () => {
   if (clouds == true) {
     clouds = false;
     toggleA.setAttribute("class", "mdl-switch mdl-js-switch mdl-js-ripple-effect mdl-js-ripple-effect--ignore-events is-upgraded");
@@ -15,8 +15,8 @@ geofs.advancedClouds.update = function() {
     toggleA.setAttribute("class", "mdl-switch mdl-js-switch mdl-js-ripple-effect mdl-js-ripple-effect--ignore-events is-upgraded is-checked")
   }
 };
-let elementSel = document.getElementsByClassName('geofs-preference-list')[0].getElementsByClassName('geofs-advanced')[0].getElementsByClassName('geofs-stopMousePropagation')[0];
-let toggleA = document.createElement("label");
+const elementSel = document.getElementsByClassName('geofs-preference-list')[0].getElementsByClassName('geofs-advanced')[0].getElementsByClassName('geofs-stopMousePropagation')[0];
+const toggleA = document.createElement("label");
     toggleA.setAttribute("class", "mdl-switch mdl-js-switch mdl-js-ripple-effect mdl-js-ripple-effect--ignore-events is-upgraded");
     toggleA.setAttribute("for", "advancedClouds");
     toggleA.setAttribute("id", "advancedClouds");
@@ -39,5 +39,5 @@ if (geofs.preferences.graphics.advancedAtmosphere == false && clouds == true) {
 };
 geofs.savePreferences();
 };
-cloudsInterval = setInterval(function(){runBetter2dClouds()},1000)
+cloudsInterval = setInterval(()=> {runBetter2dClouds()},1000)
 }

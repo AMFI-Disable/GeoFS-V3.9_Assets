@@ -9,7 +9,7 @@
         var ejected = new Boolean(1);
         function checkForEjections() {
             //if in an aircraft with ejection seats
-            let checkNumber = Number(geofs.aircraft.instance.id);
+            const checkNumber = Number(geofs.aircraft.instance.id);
             window.hasEJ = EJAircraft.has(checkNumber);
             if (window.hasEJ) {
                 //notifying you of the existence of ejection seats
@@ -39,7 +39,7 @@
                     //play the "ejection sound"
                     audio.impl.html5.playFile("https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/softtouch.mp3");
                     //canopy animation - with animation.values.eject set to 1, the canopy teleports out of view
-                    geofs.aircraft.instance.definition.parts.forEach(function(e){
+                    geofs.aircraft.instance.definition.parts.forEach((e)=> {
                     if (e.name.includes('canopy') || e.name.includes('Canopy')) {
                         e.animations[1] = {};
                         e.animations[1].type = "translate";
@@ -78,17 +78,17 @@
                     const interval = 10;        // ms
                     const g = 0.098;              // m/s²
                     // save initial LLA
-                    let [startLat, startLon, startAlt] = geofs.aircraft.instance.llaLocation;
+                    const [startLat, startLon, startAlt] = geofs.aircraft.instance.llaLocation;
 
                     let t = 0; //ms spent falling
 
-                    let b = 0 - (geofs.animation.values.aroll * 0.001);
-                    let c = (geofs.animation.values.trueKias || geofs.animation.values.kias) / 800;
+                    const b = 0 - (geofs.animation.values.aroll * 0.001);
+                    const c = (geofs.animation.values.trueKias || geofs.animation.values.kias) / 800;
 
                     function moveCamera() {
                         t += interval; //increment fall time by 10ms
-                        let seconds = t / 1000; //seconds spent falling
-                        let fall = -2 * g * Math.pow(seconds, 2); // falling downward
+                        const seconds = t / 1000; //seconds spent falling
+                        const fall = -2 * g * seconds ** 2; // falling downward
                         //let cameraFall = fall * 0.05; // scale camera fall to match 19.6m of falling
 
 
@@ -102,9 +102,9 @@
                             clearInterval(moveCameraInterval); //after 2 seconds of fall, stop falling and swap to paraglider
                             geofs.aircraft.instance.change(50);
                             // Apply horizontal drift
-                            let deltaLat = b / 111000;
-                            let deltaLon = c / (111000 * Math.cos(startLat * Math.PI / 180));
-                            let deltaAlt = 19.6; //should not be based on fall, base it on (pre-fall camera position)-(post-fall camera position)
+                            const deltaLat = b / 111000;
+                            const deltaLon = c / (111000 * Math.cos(startLat * Math.PI / 180));
+                            const deltaAlt = 19.6; //should not be based on fall, base it on (pre-fall camera position)-(post-fall camera position)
 
                             geofs.aircraft.instance.llaLocation = [ //update coords by adding deltas to original values, teleport paraglider into camera's position
                                 startLat + deltaLat,
@@ -112,10 +112,10 @@
                                 startAlt + deltaAlt
                             ];
                             console.log("EJECTION COMPLETE");
-                            let [currLat, currLon, currAlt] = geofs.aircraft.instance.llaLocation;
+                            const [currLat, currLon, currAlt] = geofs.aircraft.instance.llaLocation;
                             console.log("Aircraft Start Location:", startLat.toFixed(6), startLon.toFixed(6), startAlt.toFixed(2));
                             console.log("Aircraft End Location:", currLat.toFixed(6), currLon.toFixed(6), (startAlt + deltaAlt).toFixed(2));
-                            let sceneFall = currAlt - startAlt;
+                            const sceneFall = currAlt - startAlt;
                             console.log(`Aircraft fall: ${sceneFall.toFixed(2)} units`);                            
 
                         }
@@ -135,7 +135,7 @@
             }
         };
         //set the whole bs on an interval so it all ticks along nicely
-        ejectionInterval = setInterval(function(){checkForEjections()}, 500);
+        ejectionInterval = setInterval(()=> {checkForEjections()}, 500);
 	}
 
 runEjections();
