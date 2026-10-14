@@ -44,6 +44,6 @@ const snd = new Audio('https://geofs-assets.evengao6688.workers.dev/audio/tylerb
 
 ---
 
-## Part of the GeoFS-V3.9 Ecosystem
+## Part Of The GeoFS-V3.9 Ecosystem
 
 *© 2026 AMFI-Disable. Part of the [GeoFS-V3.9_Ecosystem](https://sites.google.com/view/geofs-v39-ecosystem/home).*
