@@ -4,6 +4,14 @@ All notable changes, asset additions, and structure updates for GeoFS-V3.9 Asset
 
 ---
 
+## [Unreleased]
+
+### Changed
+
+- Aligned documentation markdown header casing with Title Case guidelines.
+
+---
+
 ## [1.1.0] - Directory Naming And CDN Delivery Optimization
 
 ### Added
