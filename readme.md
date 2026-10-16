@@ -1,6 +1,6 @@
 # GeoFS-V3.9_Assets
 
-[![Version](https://img.shields.io/badge/Version-V1.0.0-f59e0b?style=flat-square&logo=files&logoColor=white)](https://github.com/amfi-disable/GeoFS-V3.9_Assets)
+[![Version](https://img.shields.io/badge/Version-V1.0.0-f59e0b?style=flat-square&logo=files&logoColor=white)](https://github.com/AMFI-Disable/GeoFS-V3.9_Assets)
 [![Ecosystem](https://img.shields.io/badge/GeoFS--V3.9-Ecosystem-f59e0b?style=flat-square)](https://sites.google.com/view/geofs-v39-ecosystem/home)
 [![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](license)
 
