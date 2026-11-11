@@ -34,7 +34,6 @@ GeoFS-V3.9_Assets/
 │   └── tylerbmusic/       # GPWS audio pack + HUD imagery + 3D models
 ├── data/
 │   └── airports.json      # Airport reference database
-├── icons/                 # Per-script userscript icons (PNG)
 └── styles/                # Shared vendor CSS and JS (vanilla-notify)
 ```
 
@@ -45,9 +44,6 @@ GeoFS-V3.9_Assets/
 Assets are served via Cloudflare Pages CDN. Reference them in scripts using:
 
 ```js
-// Icons
-// @icon https://geofs-assets.evengao6688.workers.dev/icons/<script-name>.png
-
 // Audio
 const snd = new Audio('https://geofs-assets.evengao6688.workers.dev/audio/tylerbmusic/minimums.wav');
 ```
