@@ -9,6 +9,11 @@ All notable changes, asset additions, and structure updates for GeoFS-V3.9 Asset
 ### Changed
 
 - Aligned documentation markdown header casing with Title Case guidelines.
+- Updated documentation in `readme.md` reflecting the migration of ecosystem userscripts to the official GeoFS favicon.
+
+### Removed
+
+- **Legacy Icon Assets**: Removed per-script PNG icon files from `icons/` following the migration to the official GeoFS favicon.
 
 ---
 
